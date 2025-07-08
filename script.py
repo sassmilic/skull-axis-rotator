@@ -37,6 +37,9 @@ def plot_sphere_with_face_direction(azimuth_deg, elevation_deg, ax=None):
         ax = fig.add_subplot(111, projection='3d')
         ax.set_box_aspect([1, 1, 1])
 
+    # set view so that az=0°, el=0° faces the camera
+    ax.view_init(elev=0, azim=0)
+
     u = np.linspace(0, 2 * np.pi, 100)
     v = np.linspace(0, np.pi, 100)
     x = np.outer(np.cos(u), np.sin(v))
@@ -86,11 +89,11 @@ def plot_sphere_grid(poses):
 
 # Define an optimal minimal non-redundant table
 poses = [
-    [(0, 60), (45, 60), (90, 60), (135, 60), (180, 60)],
-    [(0, 30), (45, 30), (90, 30), (135, 30), (180, 30)],
-    [(0, 0), (45, 0), (90, 0), (135, 0), (180, 0)],
-    [(0, -30), (45, -30), (90, -30), (135, -30), (180, -30)],
-    [(0, -60), (45, -60), (90, -60), (135, -60), (180, -60)],
+    [(180, 60), (135, 60), (0, 60), (45, 60), (90, 60)],
+    [(180, 30), (135, 30), (0, 30), (45, 30), (90, 30)],
+    [(180, 0),  (135, 0),  (0, 0),  (45, 0),  (90, 0)],
+    [(180, -30), (135, -30), (0, -30), (45, -30), (90, -30)],
+    [(180, -60), (135, -60), (0, -60), (45, -60), (90, -60)],
 ]
 
 plot_sphere_grid(poses)
